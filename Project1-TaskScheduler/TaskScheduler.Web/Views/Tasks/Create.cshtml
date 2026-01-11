@@ -1,0 +1,30 @@
+﻿@model Carl.TaskScheduler.Web.Models.TodoTask
+
+<h1>Create Task</h1>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-violation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="IsComplete" class="form-check-input" />
+        <label asp-for="IsComplete" class="form-check-label"></label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
