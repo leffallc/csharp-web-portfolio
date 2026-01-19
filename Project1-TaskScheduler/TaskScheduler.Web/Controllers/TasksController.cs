@@ -115,5 +115,23 @@ namespace Carl.TaskScheduler.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        // POST: /Tasks/ToggleComplete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ToggleComplete(int id)
+        {
+            var task = await _db.TodoTasks.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            task.IsComplete = !task.IsComplete;
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

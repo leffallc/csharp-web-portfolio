@@ -20,9 +20,23 @@
             <tr>
                 <td>@task.Title</td>
                 <td>
-                    @(task.IsComplete ? "Complete" : "Pending")
+                    @if (task.IsComplete)
+                    {
+                        <span class="badge bg-success">Complete</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Pending</span>
+                    }
                 </td>
                 <td>
+                    <form asp-action="ToggleComplete" asp-route-id="@task.Id" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-sm btn-outline-success">
+                            @(task.IsComplete ? "Mark Pending" : "Mark Complete")
+                        </button>
+                    </form>
+
                     <a asp-action="Edit" asp-route-id="@task.Id">Edit</a>
 
                     <a asp-action="Delete" asp-route-id="@task.Id">Delete</a>
