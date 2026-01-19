@@ -11,6 +11,7 @@
         <tr>
             <th>Title</th>
             <th>Status</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,9 @@
                 <td>@task.Title</td>
                 <td>
                     @(task.IsComplete ? "Complete" : "Pending")
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@task.Id">Edit</a>
                 </td>
             </tr>
         }

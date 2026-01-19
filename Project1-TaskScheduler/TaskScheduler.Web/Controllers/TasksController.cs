@@ -48,5 +48,40 @@ namespace Carl.TaskScheduler.Web.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+
+        // GET: /Tasks/Edit/5
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var task = await _db.TodoTasks.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return View(task);
+        }
+
+        // POST: /Tasks/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, TodoTask task)
+        {
+            if (id != task.Id)
+            {
+                return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(task);
+            }
+
+            _db.Update(task);
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
