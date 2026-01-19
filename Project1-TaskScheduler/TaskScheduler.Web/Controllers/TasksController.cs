@@ -83,5 +83,37 @@ namespace Carl.TaskScheduler.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        // GET: /Tasks/Delete/5
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var task = await _db.TodoTasks.FirstOrDefaultAsync(t => t.Id == id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return View(task);
+        }
+
+        // POST: /Tasks/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var task = await _db.TodoTasks.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            _db.TodoTasks.Remove(task);
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
