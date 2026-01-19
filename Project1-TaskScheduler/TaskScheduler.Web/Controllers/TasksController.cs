@@ -1,46 +1,52 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Carl.TaskScheduler.Web.Data;
 using Carl.TaskScheduler.Web.Models;
 
 namespace Carl.TaskScheduler.Web.Controllers
 {
     public class TasksController : Controller
     {
-        private static readonly List<TodoTask> _tasks = new()
+        private readonly ApplicationDbContext _db;
+
+        public TasksController(ApplicationDbContext db)
         {
-            new TodoTask { Id = 1, Title = "Install equipment", IsComplete = false },
-            new TodoTask { Id = 2, Title = "Run cable", IsComplete = true },
-            new TodoTask { Id = 3, Title = "Test signal", IsComplete = false }
-        };
-        
-        public IActionResult Index()
-        {
-            return View(_tasks);
+            _db = db;
         }
 
+        // GET: /Tasks
+        public async Task<IActionResult> Index()
+        {
+            var tasks = await _db.TodoTasks
+                .OrderBy(t => t.IsComplete)
+                .ThenBy(t => t.Id)
+                .ToListAsync();
+
+            return View(tasks);
+        }
+
+        // GET: /Tasks/Create
         [HttpGet]
         public IActionResult Create()
-        { 
+        {
             return View();
         }
 
+        // POST: /Tasks/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(TodoTask task)
+        public async Task<IActionResult> Create(TodoTask task)
         {
-            if (string.IsNullOrWhiteSpace(task.Title))
-            {
-                ModelState.AddModelError(nameof(task.Title), "Title is required.");
-            }
-
             if (!ModelState.IsValid)
             {
                 return View(task);
             }
 
-            task.Id = _tasks.Count == 0 ? 1 : _tasks.Max(t => t.Id) + 1;
-            _tasks.Add(task);
+            _db.TodoTasks.Add(task);
+            await _db.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+
         }
     }
 }

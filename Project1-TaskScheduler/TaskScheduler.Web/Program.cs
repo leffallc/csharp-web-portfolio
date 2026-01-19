@@ -1,4 +1,7 @@
-namespace TaskScheduler.Web
+using Microsoft.EntityFrameworkCore;
+using Carl.TaskScheduler.Web.Data;
+
+namespace Carl.TaskScheduler.Web
 {
     public class Program
     {
@@ -8,6 +11,9 @@ namespace TaskScheduler.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
