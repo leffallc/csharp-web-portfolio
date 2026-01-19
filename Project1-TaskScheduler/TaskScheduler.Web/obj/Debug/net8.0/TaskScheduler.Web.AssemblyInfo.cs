@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskScheduler.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8eb1a49a8969a04f19bd448c6e4a8b65e1b2da02")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74b6b782b54afa02177a19e17eee83b32368ed77")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskScheduler.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskScheduler.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

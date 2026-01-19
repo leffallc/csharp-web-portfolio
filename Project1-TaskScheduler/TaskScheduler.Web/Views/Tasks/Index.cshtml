@@ -2,9 +2,27 @@
 
 <h1>Task List</h1>
 
+@{
+    var total = Model.Count;
+    var complete = Model.Count(t => t.IsComplete);
+    var pending = total - complete;
+}
+
+<p class="text-muted">
+    Total: <strong>@total</strong>
+    Pending: <strong>@pending</strong>
+    Complete: <strong>@complete</strong>
+</p>
+
 <p>
     <a class="btn btn-primary" asp-action="Create">Create Task</a>
 </p>
+
+<div class="mb-3">
+    <a class="btn btn-outline-secondary btn-sm" asp-action="Index">All</a>
+    <a class="btn btn-outline-secondary btn-sm" asp-action="Index" asp-route-status="pending">Pending</a>
+    <a class="btn btn-outline-secondary btn-sm" asp-action="Index" asp-route-status="complete">Complete</a>
+</div>
 
 <table class="table">
     <thead>

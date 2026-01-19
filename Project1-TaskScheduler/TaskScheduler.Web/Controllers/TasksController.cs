@@ -15,9 +15,17 @@ namespace Carl.TaskScheduler.Web.Controllers
         }
 
         // GET: /Tasks
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? status)
         {
-            var tasks = await _db.TodoTasks
+            var query = _db.TodoTasks.AsQueryable();
+
+            if (status == "pending")
+                query = query.Where(t => !t.IsComplete);
+
+            if (status == "complete")
+                query = query.Where(t => t.IsComplete);
+
+            var tasks = await query
                 .OrderBy(t => t.IsComplete)
                 .ThenBy(t => t.Id)
                 .ToListAsync();
