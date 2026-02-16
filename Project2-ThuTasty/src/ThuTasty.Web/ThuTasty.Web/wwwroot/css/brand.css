@@ -1,0 +1,49 @@
+﻿:root {
+    --tt-bg: #fff7fb;
+    --tt-ink: #2b2b2b;
+    --tt-muted: #6b7280;
+    --tt-primary: #ff4fa3;
+    --tt-primary-2: #7c3aed;
+    --tt-accent: #22c55e;
+    --tt-card: #ffffff;
+    --tt-border: rgba(0,0,0,.08);
+}
+
+body {
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(255,79,163,.18), transparent), radial-gradient(1000px 500px at 90% 20%, rgba(124,58,237,.14), transparent), var(--tt-bg);
+    color: var(--tt-ink);
+}
+
+.tt-navbar {
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,.65);
+    border-bottom: 1px solid var(--tt-border);
+}
+
+.tt-brand {
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+
+.tt-hero {
+    border: 1px solid var(--tt-border);
+    background: linear-gradient(135deg, rgba(255,79,163,.15), rgba(124,58,237,.12));
+    border-radius: 18px;
+    padding: 28px;
+}
+
+.tt-card {
+    border: 1px solid var(--tt-border);
+    border-radius: 16px;
+    background: var(--tt-card);
+    box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+.tt-btn-primary {
+    background: linear-gradient(135deg, var(--tt-primary), var(--tt-primary-2));
+    border: none;
+}
+
+    .tt-btn-primary:hover {
+        filter: brightness(1.02);
+    }
