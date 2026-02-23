@@ -57,9 +57,11 @@ body {
 
 .tt-btn-primary {
     background: linear-gradient(135deg, var(--tt-primary), var(--tt-primary-2));
+    color: white;
     border: none;
 }
 
     .tt-btn-primary:hover {
-        filter: brightness(1.02);
+        color: white;
+        filter: brightness(1.05);
     }
