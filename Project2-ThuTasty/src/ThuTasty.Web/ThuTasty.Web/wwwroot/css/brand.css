@@ -14,10 +14,26 @@ body {
     color: var(--tt-ink);
 }
 
+/* ThuTasty logo sizing */
+.tt-logo {
+    height: 52px;
+    width: auto;
+    display: block;
+}
+
+/* slightly smaller on mobile */
+@media (max-width: 576px) {
+    .tt-logo {
+        height: 44px;
+    }
+}
+
 .tt-navbar {
     backdrop-filter: blur(10px);
     background: rgba(255,255,255,.65);
     border-bottom: 1px solid var(--tt-border);
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .tt-brand {
