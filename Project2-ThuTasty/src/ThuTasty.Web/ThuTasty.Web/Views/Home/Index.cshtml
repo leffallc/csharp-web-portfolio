@@ -1,11 +1,20 @@
 ﻿@{
     ViewData["Title"] = "Home";
+
+
+    var featured = new[]
+    {
+        new { Name = "Strawberry Dream Cup", Price = "$6.50", Img = "/images/thutasty-logo.png"},
+        new { Name = "Ube Cream Puff", Price = "$5.75", Img = "/images/thutasty-logo.png"},
+        new { Name = "Chocolate Silk Brownie", Price = "$5.00", Img = "/images/thutasty-logo.png"},
+        new { Name = "Lemon Berry Tart", Price = "$6.25", Img = "/images/thutasty-logo.png"}
+    };
 }
 
 <div class="container mt-4">
 
-    <div class="tt-hero text-center">
-
+    <!-- HERO -->
+    <div class="tt-hero text-center mb-5">
         <h1 class="display-5 fw-bold mb-3">
             Freshly Baked. Beautifully Crafted.
         </h1>
@@ -19,6 +28,29 @@
             Shop Now
         </a>
 
+    </div>
+
+    <!-- FEATURED SECTION -->
+    <h2 class="fw-bold mb-3">Featured Treats</h2>
+
+    <div class="row g-4">
+        @foreach (var item in featured)
+        {
+            <div class="col-mb-3">
+                <div class="tt-card p-3 text-center">
+
+                    <img src="@item.Img" class="img-fluid mb-3" style="border-radius:12px;" />
+
+                    <h5 class="fw-bold">@item.Name</h5>
+                    <p class="text-muted">@item.Price</p>
+
+                    <button class="btn tt-btn-primary w-100">
+                        Add to Cart
+                    </button>
+
+                </div>
+            </div>
+        }
     </div>
 
 </div>
