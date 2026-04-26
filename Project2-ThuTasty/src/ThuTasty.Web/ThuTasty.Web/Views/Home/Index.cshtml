@@ -36,10 +36,10 @@
     <div class="row g-4">
         @foreach (var item in featured)
         {
-            <div class="col-mb-3">
+            <div class="col-12 col-sm-6 col-lg-3">
                 <div class="tt-card p-3 text-center">
 
-                    <img src="@item.Img" class="img-fluid mb-3" style="border-radius:12px;" />
+                    <img src="@item.Img" class="img-fluid mb-3" style="height:180px; object-fit:cover; border-radius:12px;" />
 
                     <h5 class="fw-bold">@item.Name</h5>
                     <p class="text-muted">@item.Price</p>
