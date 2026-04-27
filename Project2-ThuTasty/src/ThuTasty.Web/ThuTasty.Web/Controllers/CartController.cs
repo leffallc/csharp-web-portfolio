@@ -57,6 +57,62 @@ namespace ThuTasty.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpPost]
+        public IActionResult Increase(int productId)
+        {
+            var cart = GetCart();
+
+            var item = cart.FirstOrDefault(i => i.ProductId == productId);
+
+            if (item != null)
+            {
+                item.Quantity++;
+            }
+
+            SaveCart(cart);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Decrease(int productId)
+        {
+            var cart = GetCart();
+
+            var item = cart.FirstOrDefault(i => i.ProductId == productId);
+
+            if (item != null)
+            {
+                item.Quantity--;
+
+                if (item.Quantity <= 0)
+                {
+                    cart.Remove(item);
+                }
+            }
+
+            SaveCart(cart);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Remove(int productId)
+        {
+            var cart = GetCart();
+
+            var item = cart.FirstOrDefault(i => i.ProductId == productId);
+
+            if (item != null)
+            {
+                cart.Remove(item);
+            }
+
+            SaveCart(cart);
+
+            return RedirectToAction("Index");
+        }
+
         private List<CartItem> GetCart()
         {
             var cartJson = HttpContext.Session.GetString(CartSessionKey);
