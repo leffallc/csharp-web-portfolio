@@ -1,14 +1,6 @@
-﻿@{
+﻿@model List<ThuTasty.Web.Models.Product>
+@{
     ViewData["Title"] = "Home";
-
-
-    var featured = new[]
-    {
-        new { Name = "Strawberry Dream Cup", Price = "$6.50", Img = "/images/thutasty-logo.png"},
-        new { Name = "Ube Cream Puff", Price = "$5.75", Img = "/images/thutasty-logo.png"},
-        new { Name = "Chocolate Silk Brownie", Price = "$5.00", Img = "/images/thutasty-logo.png"},
-        new { Name = "Lemon Berry Tart", Price = "$6.25", Img = "/images/thutasty-logo.png"}
-    };
 }
 
 <div class="container mt-4">
@@ -34,15 +26,17 @@
     <h2 class="fw-bold mb-3">Featured Treats</h2>
 
     <div class="row g-4">
-        @foreach (var item in featured)
+        @foreach (var item in Model)
         {
             <div class="col-12 col-sm-6 col-lg-3">
                 <div class="tt-card p-3 text-center">
 
-                    <img src="@item.Img" class="img-fluid mb-3" style="height:180px; object-fit:cover; border-radius:12px;" />
+                    <img src="@item.ImageUrl"
+                        class="img-fluid mb-3"
+                        style="height:180px; object-fit:cover; border-radius:12px;" />
 
                     <h5 class="fw-bold">@item.Name</h5>
-                    <p class="text-muted">@item.Price</p>
+                    <p class="text-muted">$@item.Price</p>
 
                     <button class="btn tt-btn-primary w-100">
                         Add to Cart
