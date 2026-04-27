@@ -38,9 +38,14 @@
                     <h5 class="fw-bold">@item.Name</h5>
                     <p class="text-muted">$@item.Price</p>
 
-                    <button class="btn tt-btn-primary w-100">
-                        Add to Cart
-                    </button>
+                    <form asp-controller="Cart" asp-action="Add" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="productId" value="@item.Id" />
+
+                        <button type="submit" class="btn tt-btn-primary w-100">
+                            Add to Cart
+                        </button>
+                    </form> 
 
                 </div>
             </div>
