@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThuTasty.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0066089dcd6b394ca646eb183e7d0031cb10d078")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec38507faeaf4586c2c868aa948b6dccb22feaa0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThuTasty.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThuTasty.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
