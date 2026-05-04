@@ -19,5 +19,13 @@ namespace ThuTasty.Web.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public List<OrderItem> Items { get; set; } = new();
+
+        public string OrderStatus { get; set; } = "Pending";
+
+        public string PaymentStatus { get; set; } = "Unpaid";
+
+        public string? StripeSessionId { get; set; }
+
+        public string? PaymentProvider { get; set; }
     }
 }
