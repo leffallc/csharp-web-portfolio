@@ -115,6 +115,11 @@ namespace ThuTasty.Web.Controllers
 
         public IActionResult Checkout()
         {
+            var cart = GetCart();
+            if (!cart.Any())
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
 

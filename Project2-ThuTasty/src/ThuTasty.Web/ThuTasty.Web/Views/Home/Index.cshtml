@@ -36,7 +36,7 @@
                         style="height:180px; object-fit:cover; border-radius:12px;" />
 
                     <h5 class="fw-bold">@item.Name</h5>
-                    <p class="text-muted">$@item.Price</p>
+                    <p class="text-muted">@item.Price.ToString("C")</p>
 
                     <form asp-controller="Cart" asp-action="Add" method="post">
                         @Html.AntiForgeryToken()

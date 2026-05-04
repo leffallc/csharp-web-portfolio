@@ -18,8 +18,18 @@
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
-        <button class="btn tt-btn-primary w-100">
+        <button id="placeOrderBtn" class="btn tt-btn-primary w-100">
             Place Order
         </button>
+
+        <script>
+            document.querySelector('form')?.addEventListener('submit', function () {
+                const btn = document.getElementById('placeOrderBtn');
+                if (btn) {
+                    btn.ariaDisabled = true;
+                    btn.innerText = 'Placing...';
+                }
+            });
+        </script>
     </form>
 </div>

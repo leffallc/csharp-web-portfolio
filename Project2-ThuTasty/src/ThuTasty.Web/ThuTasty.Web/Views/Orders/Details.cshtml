@@ -1,0 +1,46 @@
+﻿@model ThuTasty.Web.Models.Order
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<div class="container mt-4">
+    <h1 class="fw-bold mb-3">Order #@Model.Id</h1>
+
+    <div class="tt-card p-3 mb-3">
+        <p><strong>Customer:</strong> @Model.CustomerName</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Date:</strong> @Model.CreatedAt.ToString("f")</p>
+        <p><strong>Total:</strong> @Model.TotalAmount.ToString("C")</p>
+    </div>
+
+    <div class="tt-card p-3">
+        <h4 class="fw-bold mb-3">Items</h4>
+
+        <table class="table align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price.ToString("C")</td>
+                        <td>@item.Quantity</td>
+                        <td>@((item.Price * item.Quantity).ToString("C"))</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <a asp-action="Index" class="btn btn-outline-dark mt-3">
+        Back to Orders
+    </a>
+</div>
