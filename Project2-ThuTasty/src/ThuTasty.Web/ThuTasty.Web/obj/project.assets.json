@@ -2336,6 +2336,23 @@
           "lib/net6.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
+      "Stripe.net/51.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "System.Configuration.ConfigurationManager": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Stripe.net.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Stripe.net.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.ClientModel/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -6857,6 +6874,30 @@
         "sqlitepclraw.provider.e_sqlite3.nuspec"
       ]
     },
+    "Stripe.net/51.1.0": {
+      "sha512": "q4Kj14NP0jaGKRkeuCTL2Mwn7BVgVUHowBiGJAX2fGiEIOVbdhpCERlNRTuvirN/5IGae6cCToS0+H/oSX395A==",
+      "type": "package",
+      "path": "stripe.net/51.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "icon.png",
+        "lib/net462/Stripe.net.dll",
+        "lib/net462/Stripe.net.xml",
+        "lib/net6.0/Stripe.net.dll",
+        "lib/net6.0/Stripe.net.xml",
+        "lib/net8.0/Stripe.net.dll",
+        "lib/net8.0/Stripe.net.xml",
+        "lib/net9.0/Stripe.net.dll",
+        "lib/net9.0/Stripe.net.xml",
+        "lib/netstandard2.0/Stripe.net.dll",
+        "lib/netstandard2.0/Stripe.net.xml",
+        "stripe.net.51.1.0.nupkg.sha512",
+        "stripe.net.nuspec"
+      ]
+    },
     "System.ClientModel/1.0.0": {
       "sha512": "I3CVkvxeqFYjIVEP59DnjbeoGNfo/+SZrCLpRz2v/g0gpCHaEMPtWSY0s9k/7jR1rAsLNg2z2u1JRB76tPjnIw==",
       "type": "package",
@@ -8070,7 +8111,8 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.26",
       "Microsoft.EntityFrameworkCore.Sqlite >= 8.0.23",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.26",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.23"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.23",
+      "Stripe.net >= 51.1.0"
     ]
   },
   "packageFolders": {
@@ -8150,6 +8192,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[8.0.23, )"
+          },
+          "Stripe.net": {
+            "target": "Package",
+            "version": "[51.1.0, )"
           }
         },
         "imports": [

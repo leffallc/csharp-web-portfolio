@@ -148,13 +148,17 @@ namespace ThuTasty.Web.Controllers
                 }).ToList()
             };
 
+            order.PaymentStatus = "Unpaid";
+            order.OrderStatus = "Pending";
+            order.PaymentProvider = "Stripe";
+
             _context.Orders.Add(order);
             _context.SaveChanges();
 
             // Clear cart
-            HttpContext.Session.Remove("Cart");
+            HttpContext.Session.Remove(CartSessionKey);
 
-            return RedirectToAction("Success");
+            return RedirectToAction("StripeCheckout", "Payments", new { orderId = order.Id });
         }
 
         public IActionResult Success()

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "01T34mgQz2w=",
+  "dgSpecHash": "+SJgqYJwLL0=",
   "success": true,
   "projectFilePath": "C:\\Users\\leffa\\source\\repos\\GitHub\\csharp-web-portfolio\\Project2-ThuTasty\\src\\ThuTasty.Web\\ThuTasty.Web\\ThuTasty.Web.csproj",
   "expectedPackageFiles": [
@@ -138,6 +138,7 @@
     "C:\\Users\\leffa\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
     "C:\\Users\\leffa\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
     "C:\\Users\\leffa\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.6\\sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
+    "C:\\Users\\leffa\\.nuget\\packages\\stripe.net\\51.1.0\\stripe.net.51.1.0.nupkg.sha512",
     "C:\\Users\\leffa\\.nuget\\packages\\system.clientmodel\\1.0.0\\system.clientmodel.1.0.0.nupkg.sha512",
     "C:\\Users\\leffa\\.nuget\\packages\\system.codedom\\5.0.0\\system.codedom.5.0.0.nupkg.sha512",
     "C:\\Users\\leffa\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
