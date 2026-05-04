@@ -5,7 +5,7 @@ using ThuTasty.Web.Data;
 
 namespace ThuTasty.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class OrdersController : Controller
     {
         private readonly ApplicationDbContext _context;

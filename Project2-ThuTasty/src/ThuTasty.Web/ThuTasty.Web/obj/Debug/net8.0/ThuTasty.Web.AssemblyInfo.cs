@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThuTasty.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec38507faeaf4586c2c868aa948b6dccb22feaa0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4baf65f495514637cfac1f5e4eb7bdc64a81db4e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThuTasty.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThuTasty.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

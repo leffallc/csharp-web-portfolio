@@ -11,7 +11,7 @@ using ThuTasty.Web.Models;
 
 namespace ThuTasty.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
