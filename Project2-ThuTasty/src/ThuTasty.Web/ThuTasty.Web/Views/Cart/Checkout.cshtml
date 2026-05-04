@@ -1,0 +1,25 @@
+﻿@model ThuTasty.Web.Models.CheckoutViewModel
+
+<div class="container mt-4">
+    <h2 class="fw-bold mb-3">Checkout</h2>
+
+    <form asp-action="Checkout" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input asp-for="CustomerName" class="form-control" />
+            <span asp-validation-for="CustomerName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <button class="btn tt-btn-primary w-100">
+            Place Order
+        </button>
+    </form>
+</div>

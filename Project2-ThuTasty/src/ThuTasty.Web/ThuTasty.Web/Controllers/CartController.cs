@@ -113,6 +113,50 @@ namespace ThuTasty.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Checkout(CheckoutViewModel model)
+        {
+            var cart = GetCart();
+
+            if (!ModelState.IsValid || !cart.Any())
+            {
+                return View(model);
+            }
+
+            var order = new Order
+            {
+                CustomerName = model.CustomerName,
+                Email = model.Email,
+                TotalAmount = cart.Sum(item => item.Price * item.Quantity),
+                Items = cart.Select(item => new OrderItem
+                {
+                    ProductId = item.ProductId,
+                    ProductName = item.ProductName,
+                    Price = item.Price,
+                    Quantity = item.Quantity,
+                }).ToList()
+            };
+
+            _context.Orders.Add(order);
+            _context.SaveChanges();
+
+            // Clear cart
+            HttpContext.Session.Remove("Cart");
+
+            return RedirectToAction("Success");
+        }
+
+        public IActionResult Success()
+        {
+            return View();
+        }
+
         private List<CartItem> GetCart()
         {
             var cartJson = HttpContext.Session.GetString(CartSessionKey);
