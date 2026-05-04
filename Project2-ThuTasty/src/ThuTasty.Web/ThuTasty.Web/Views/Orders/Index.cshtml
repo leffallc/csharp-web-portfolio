@@ -25,6 +25,9 @@
                         <th>Email</th>
                         <th>Items</th>
                         <th>Total</th>
+                        <th>Order Status</th>
+                        <th>Payment Status</th>
+                        <th>Provider</th>
                         <th>Date</th>
                         <th></th>
                     </tr>
@@ -38,6 +41,9 @@
                             <td>@order.Email</td>
                             <td>@order.Items.Sum(i => i.Quantity)</td>
                             <td>@order.TotalAmount.ToString("C")</td>
+                            <td>@order.OrderStatus</td>
+                            <td>@order.PaymentStatus</td>
+                            <td>@order.PaymentProvider</td>
                             <td>@order.CreatedAt.ToString("g")</td>
                             <td>
                                 <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-dark">
