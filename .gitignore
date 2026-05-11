@@ -1,3 +1,6 @@
 # Visual Studio
 .vs/
 **/.vs/
+bin/
+obj/
+git rm -r --cached ./Project2-ThuTasty/src/ThuTasty.Web/ThuTasty.Web/bin/
