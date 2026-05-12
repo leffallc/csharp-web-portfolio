@@ -15,7 +15,7 @@ namespace ThuTasty.Web
             builder.Services.AddRazorPages();
             builder.Services.AddSession();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(builder.Configuration.GetConnectionString("sqlite")));
+                options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddDefaultIdentity<IdentityUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
