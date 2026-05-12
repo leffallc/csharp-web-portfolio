@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThuTasty.Web.Data;
 
@@ -11,11 +10,9 @@ using ThuTasty.Web.Data;
 namespace ThuTasty.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260512013108_initial-sqlite")]
-    partial class initialsqlite
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.26");
