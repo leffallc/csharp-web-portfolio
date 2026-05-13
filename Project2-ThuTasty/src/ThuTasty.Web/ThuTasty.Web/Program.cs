@@ -52,26 +52,6 @@ namespace ThuTasty.Web
 
             app.MapRazorPages();
 
-            using (var scope = app.Services.CreateScope())
-            {
-                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-                if (!await roleManager.RoleExistsAsync("Admin"))
-                {
-                    await roleManager.CreateAsync(new IdentityRole("Admin"));
-                }
-
-                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-
-                var adminEmail = "leffall.carl@gmail.com"; // use the email you registered with
-                var user = await userManager.FindByEmailAsync(adminEmail);
-
-                if (user != null && !await userManager.IsInRoleAsync(user, "Admin"))
-                {
-                    await userManager.AddToRoleAsync(user, "Admin");
-                }
-            }
-
             app.Run();
         }
     }
