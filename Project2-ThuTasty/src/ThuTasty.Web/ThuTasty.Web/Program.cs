@@ -23,6 +23,9 @@ namespace ThuTasty.Web
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            // admin panel
+            builder.Services.AddCoreAdmin("Admin");
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
