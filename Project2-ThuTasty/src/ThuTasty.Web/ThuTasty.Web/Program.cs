@@ -15,13 +15,16 @@ namespace ThuTasty.Web
             builder.Services.AddRazorPages();
             builder.Services.AddSession();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddDefaultIdentity<IdentityUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
             })
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // admin panel
+            builder.Services.AddCoreAdmin("Admin");
 
             var app = builder.Build();
 
@@ -48,26 +51,6 @@ namespace ThuTasty.Web
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.MapRazorPages();
-
-            using (var scope = app.Services.CreateScope())
-            {
-                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-                if (!await roleManager.RoleExistsAsync("Admin"))
-                {
-                    await roleManager.CreateAsync(new IdentityRole("Admin"));
-                }
-
-                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-
-                var adminEmail = "leffall.carl@gmail.com"; // use the email you registered with
-                var user = await userManager.FindByEmailAsync(adminEmail);
-
-                if (user != null && !await userManager.IsInRoleAsync(user, "Admin"))
-                {
-                    await userManager.AddToRoleAsync(user, "Admin");
-                }
-            }
 
             app.Run();
         }
