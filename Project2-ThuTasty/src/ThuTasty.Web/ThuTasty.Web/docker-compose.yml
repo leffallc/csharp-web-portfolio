@@ -1,0 +1,7 @@
+services:
+  thutasty:
+    image: thutasty
+    ports:
+      - 8081:8080
+    volumes:
+      - ./state:/app/state
