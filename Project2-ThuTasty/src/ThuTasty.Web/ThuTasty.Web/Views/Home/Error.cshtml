@@ -1,0 +1,27 @@
+﻿@model ThuTasty.Web.Models.ErrorViewModel
+
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="container py-5 text-center">
+    <h1>Something went wrong</h1>
+
+    <p class="lead">
+        We could not complete your request. Please try again.
+    </p>
+
+    @if (Model.ShowRequestId)
+    {
+        <p>
+            <strong>Reference ID:</strong>
+            <code>@Model.RequestId</code>
+        </p>
+    }
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="btn btn-primary">
+        Return to Home
+    </a>
+</div>

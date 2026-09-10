@@ -10,11 +10,13 @@ namespace ThuTasty.Web.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
+        private readonly ILogger<PaymentsController> _logger;
 
-        public PaymentsController(ApplicationDbContext context, IConfiguration configuration)
+        public PaymentsController(ApplicationDbContext context, IConfiguration configuration, ILogger<PaymentsController> logger)
         {
             _context = context;
             _configuration = configuration;
+            _logger = logger;
         }
 
         public async Task<IActionResult> StripeCheckout(int orderId)
@@ -25,6 +27,7 @@ namespace ThuTasty.Web.Controllers
 
             if (order == null)
             {
+                _logger.LogWarning("Stripe checkout attempted for Order {OrderId}, but the order was not found.", orderId);
                 return NotFound();
             }
 
@@ -57,6 +60,11 @@ namespace ThuTasty.Web.Controllers
 
             var service = new SessionService();
             var session = service.Create(options);
+
+            _logger.LogInformation(
+                "Stripe Checkout Session {StripeSessionId} created for Order {OrderId}.",
+                session.Id,
+                order.Id);
 
             order.StripeSessionId = session.Id;
             order.PaymentProvider = "Stripe";
